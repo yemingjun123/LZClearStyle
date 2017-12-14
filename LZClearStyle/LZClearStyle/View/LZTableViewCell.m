@@ -8,7 +8,6 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "LZTableViewCell.h"
-#import "LZStrikethroughLabel.h"
 
 @interface LZTableViewCell() <UIGestureRecognizerDelegate, UITextFieldDelegate>
 
@@ -99,6 +98,10 @@ const float UI_CUES_WIDTH = 50.0f;
     _itemCompleteLayer.backgroundColor = [[UIColor alloc] initWithRed:0.0 green:0.6 blue:0.0 alpha:1.0].CGColor;
     _itemCompleteLayer.hidden = YES;
     [self.layer insertSublayer:_itemCompleteLayer atIndex:0];
+}
+
+- (LZStrikethroughLabel *)label {
+    return _label;
 }
 
 #pragma mark - UIPanGestureRecognizer handlers

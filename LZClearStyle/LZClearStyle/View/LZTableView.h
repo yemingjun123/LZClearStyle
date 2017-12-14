@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define LZ_ROW_HEIGHT 50.0f
+
 @class LZTableView;
 
 @protocol LZTableViewDataSource <NSObject>
@@ -18,12 +20,16 @@
 
 - (UIView *)tableView:(LZTableView *)tableView cellForRow:(NSInteger)row;
 
+- (void)itemAdded;
+
 @end
 
 
 @interface LZTableView : UIView <UIScrollViewDelegate>
 
 @property (nonatomic, assign) id<LZTableViewDataSource> dataSource;
+
+@property (nonatomic, assign) id<UIScrollViewDelegate> delegate;
 
 @property (nonatomic, strong, readonly) UIScrollView *scrollView;
 

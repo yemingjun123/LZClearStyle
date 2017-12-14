@@ -18,6 +18,8 @@
 		9F4FB4FF1FDE53C1000C4129 /* LZToDoItemManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4FB4FE1FDE53C1000C4129 /* LZToDoItemManager.m */; };
 		9F4FB5051FDE72A3000C4129 /* LZTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4FB5041FDE72A3000C4129 /* LZTableViewCell.m */; };
 		9F4FB50A1FDE8340000C4129 /* LZStrikethroughLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4FB5091FDE8340000C4129 /* LZStrikethroughLabel.m */; };
+		9FA464351FE2530C00DE870D /* LZTableViewDragAddNew.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA464341FE2530C00DE870D /* LZTableViewDragAddNew.m */; };
+		9FA464381FE2656D00DE870D /* LZTableViewPinchToAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA464371FE2656D00DE870D /* LZTableViewPinchToAdd.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,10 @@
 		9F4FB5071FDE74C6000C4129 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9F4FB5081FDE8340000C4129 /* LZStrikethroughLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZStrikethroughLabel.h; sourceTree = "<group>"; };
 		9F4FB5091FDE8340000C4129 /* LZStrikethroughLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZStrikethroughLabel.m; sourceTree = "<group>"; };
+		9FA464331FE2530C00DE870D /* LZTableViewDragAddNew.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZTableViewDragAddNew.h; sourceTree = "<group>"; };
+		9FA464341FE2530C00DE870D /* LZTableViewDragAddNew.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZTableViewDragAddNew.m; sourceTree = "<group>"; };
+		9FA464361FE2656D00DE870D /* LZTableViewPinchToAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZTableViewPinchToAdd.h; sourceTree = "<group>"; };
+		9FA464371FE2656D00DE870D /* LZTableViewPinchToAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZTableViewPinchToAdd.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +120,10 @@
 			children = (
 				9F246BD61FE0CC8D00CC2136 /* LZTableView.h */,
 				9F246BD71FE0CC8D00CC2136 /* LZTableView.m */,
+				9FA464331FE2530C00DE870D /* LZTableViewDragAddNew.h */,
+				9FA464341FE2530C00DE870D /* LZTableViewDragAddNew.m */,
+				9FA464361FE2656D00DE870D /* LZTableViewPinchToAdd.h */,
+				9FA464371FE2656D00DE870D /* LZTableViewPinchToAdd.m */,
 				9F4FB5031FDE72A3000C4129 /* LZTableViewCell.h */,
 				9F4FB5041FDE72A3000C4129 /* LZTableViewCell.m */,
 				9F4FB5081FDE8340000C4129 /* LZStrikethroughLabel.h */,
@@ -206,9 +216,11 @@
 				9F4FB50A1FDE8340000C4129 /* LZStrikethroughLabel.m in Sources */,
 				9F4FB5051FDE72A3000C4129 /* LZTableViewCell.m in Sources */,
 				9F1CD0421FDE4E9A00847F55 /* main.m in Sources */,
+				9FA464351FE2530C00DE870D /* LZTableViewDragAddNew.m in Sources */,
 				9F4FB4F81FDE4FFB000C4129 /* LZViewController.m in Sources */,
 				9F4FB4FC1FDE5118000C4129 /* LZToDoItem.m in Sources */,
 				9F1CD0341FDE4E9A00847F55 /* AppDelegate.m in Sources */,
+				9FA464381FE2656D00DE870D /* LZTableViewPinchToAdd.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,7 +357,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yemingjun.LZClearStyle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -364,7 +376,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yemingjun.LZClearStyle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

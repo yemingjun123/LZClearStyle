@@ -16,8 +16,6 @@
     Class         _cellClass;
 }
 
-const float LZ_ROW_HEIGHT = 50.0f;
-
 - (instancetype)initWithCoder:(NSCoder *)coder {
     self = [super initWithCoder:coder];
     if (self) {
@@ -161,6 +159,24 @@ const float LZ_ROW_HEIGHT = 50.0f;
 #pragma mark - UIScrollViewDelegate handlers
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     [self refreshView];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(scrollViewDidScroll:)]) {
+        [self.delegate scrollViewDidScroll:scrollView];
+    }
+}
+
+#pragma mark - UIScrollViewDelegate forwarding
+- (BOOL)respondsToSelector:(SEL)aSelector {
+    if ([self.delegate respondsToSelector:aSelector]) {
+        return YES;
+    }
+    return [super respondsToSelector:aSelector];
+}
+
+- (id)forwardingTargetForSelector:(SEL)aSelector {
+    if ([self.delegate respondsToSelector:aSelector]) {
+        return self.delegate;
+    }
+    return [super forwardingTargetForSelector:aSelector];
 }
 
 @end

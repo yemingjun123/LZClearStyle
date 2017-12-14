@@ -9,13 +9,15 @@
 #import "LZViewController.h"
 #import "LZToDoItemManager.h"
 #import "LZTableViewCell.h"
+#import "LZTableViewDragAddNew.h"
 
 @interface LZViewController ()<LZTableViewDataSource, LZTableViewCellDelegate>
 
 {
-    LZToDoItemManager   *_manager;
-    NSArray             *_toDoItems;
-    CGFloat              _editingOffset;
+    LZToDoItemManager       *_manager;
+    LZTableViewDragAddNew   *_dragAddNew;
+    NSArray                 *_toDoItems;
+    CGFloat                  _editingOffset;
 }
 
 @end
@@ -38,6 +40,7 @@
 
 - (void)setupTableView {
     self.tableView.dataSource = self;
+    _dragAddNew = [[LZTableViewDragAddNew alloc] initWithTableView:self.tableView];
     [self.tableView registerClassForCellReuse:[LZTableViewCell class]];
 }
 
@@ -63,6 +66,22 @@
     cell.delegate = self;
     cell.backgroundColor = [self colorForIndex:row];
     return cell;
+}
+
+- (void)itemAdded {
+    LZToDoItem *toDoItem = [LZToDoItem new];
+    [_manager addToDoItem:toDoItem atIndex:0];
+    [self loadData];
+    [_tableView reloadData];
+    
+    LZTableViewCell *editCell;
+    for (LZTableViewCell *cell in [_tableView visibleCells]) {
+        if (cell.todoItem == toDoItem) {
+            editCell = cell;
+            break;
+        }
+    }
+    [editCell.label becomeFirstResponder];
 }
 
 #pragma mark - LZTableViewCellDelegate handlers
@@ -123,64 +142,6 @@
     }
 }
 
-
-/*
-#pragma mark - UITableViewDataSource protocol methods
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _toDoItems.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    LZTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    LZToDoItem *item = _toDoItems[indexPath.row];
-    cell.todoItem = item;
-    cell.delegate = self;
-    return cell;
-}
-
-#pragma mark - UITableViewDataDelegate protocol methods
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 50.0f;
-}
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    cell.backgroundColor = [self colorForIndex:indexPath.row];
-    cell.textLabel.backgroundColor = [UIColor clearColor];
-}
- 
-#pragma mark - LZTableViewCellDelegate protocol method
-- (void)toDoItemDeleted:(LZToDoItem *)todoItem {
-    CGFloat delay = 0.0f;
-    
-    // 删除数据
-    [_manager deleteToDoItem:todoItem];
-    
-    // 拿到可视范围的cell
-    NSArray *visibleCells = [_tableView visibleCells];
-    
-    UIView *lastView = [visibleCells lastObject];
-    BOOL startAnimating = false;
-    
-    for (LZTableViewCell *cell in visibleCells) {
-        if (startAnimating) {
-            [UIView animateWithDuration:0.3f delay:delay options:UIViewAnimationOptionCurveEaseOut animations:^{
-                cell.frame = CGRectOffset(cell.frame, 0.0f, - cell.frame.size.height);
-            } completion:^(BOOL finished) {
-                if (cell == lastView) {
-                    [self.tableView reloadData];
-                }
-            }];
-            delay += 0.03f;
-        }
-        
-        // 如果遍历到被删除的项目,开始动画
-        if (cell.todoItem == todoItem) {
-            startAnimating = true;
-            cell.hidden = YES;
-        }
-    }
-}
-*/
 
 @end
 

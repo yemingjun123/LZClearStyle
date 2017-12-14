@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "LZToDoItem.h"
+#import "LZStrikethroughLabel.h"
 
 @class LZTableViewCell;
 
@@ -27,8 +28,9 @@
 
 @property (nonatomic) LZToDoItem *todoItem;
 
-@property (nonatomic, assign) id <LZTableViewCellDelegate> delegate;
+@property (nonatomic, assign) id<LZTableViewCellDelegate> delegate;
 
+@property (nonatomic, strong, readonly) LZStrikethroughLabel *label;
 
 @end
 
