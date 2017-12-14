@@ -1,2 +1,7 @@
 # LZClearStyle
-Learn  and exercise
+
+```objc
+
+id obj = [NSObject new];
+
+```
